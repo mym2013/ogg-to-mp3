@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>OGG → MP3</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="app">
+
+    <section class="converter-card">
+
+      <div class="header">
+
+        <div class="logo" aria-hidden="true">
+          ⇄
+        </div>
+
+        <h1>OGG → MP3</h1>
+
+        <p>
+          Convierte tus archivos de audio de forma rápida y sencilla.
+        </p>
+
+      </div>
+
+      <div
+        id="dropZone"
+        class="drop-zone"
+        tabindex="0"
+        role="button"
+        aria-label="Seleccionar archivo OGG"
+      >
+
+        <input
+          type="file"
+          id="fileInput"
+          accept=".ogg,audio/ogg"
+          hidden
+        >
+
+        <div class="upload-icon">↑</div>
+
+        <p class="drop-title">
+          Arrastra tu archivo .ogg aquí
+        </p>
+
+        <p class="drop-separator">
+          o
+        </p>
+
+        <button
+          id="selectButton"
+          class="select-button"
+          type="button"
+        >
+          Seleccionar archivo
+        </button>
+
+      </div>
+
+      <div id="fileInfo" class="file-info hidden">
+
+        <div class="file-details">
+
+          <span class="file-icon">◇</span>
+
+          <div>
+            <p id="fileName" class="file-name"></p>
+            <p id="fileSize" class="file-size"></p>
+          </div>
+
+        </div>
+
+        <button
+          id="removeButton"
+          class="remove-button"
+          type="button"
+          aria-label="Eliminar archivo"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <button
+        id="convertButton"
+        class="convert-button"
+        type="button"
+        disabled
+      >
+        Convertir a MP3
+      </button>
+
+      <p id="status" class="status"></p>
+
+    </section>
+
+    <p class="footer">
+      OGG → MP3 Converter
+    </p>
+
+  </main>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
