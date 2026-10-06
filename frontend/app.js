@@ -85,12 +85,14 @@ function handleFile(file) {
     .pop()
     .toLowerCase();
 
-  if (extension !== "ogg") {
+  const allowedExtensions = ["ogg", "opus"];
+
+  if (!allowedExtensions.includes(extension)) {
 
     resetFile();
 
     status.textContent =
-      "Selecciona un archivo con extensión .ogg";
+      "Selecciona un archivo con extensión .ogg o .opus";
 
     return;
   }
@@ -139,7 +141,7 @@ function resetFile() {
 
 
 // --------------------------------------------------
-// Conversión OGG → MP3
+// Conversión OGG / OPUS → MP3
 // --------------------------------------------------
 
 convertButton.addEventListener("click", async () => {
@@ -164,12 +166,12 @@ convertButton.addEventListener("click", async () => {
   try {
 
     const response = await fetch(
-  "/convert",
-  {
-    method: "POST",
-    body: formData
-  }
-);
+      "/convert",
+      {
+        method: "POST",
+        body: formData
+      }
+    );
 
     if (!response.ok) {
 
@@ -200,7 +202,7 @@ convertButton.addEventListener("click", async () => {
       document.createElement("a");
 
     const originalName =
-      selectedFile.name.replace(/\.ogg$/i, "");
+      selectedFile.name.replace(/\.(ogg|opus)$/i, "");
 
     downloadLink.href = downloadUrl;
 
